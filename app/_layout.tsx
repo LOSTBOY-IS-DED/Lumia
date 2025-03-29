@@ -1,6 +1,14 @@
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { ClerkLoaded, ClerkProvider } from '@clerk/clerk-expo';
+import { tokenCache } from '@clerk/clerk-expo/token-cache'
+
+// const publishablekey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
+
+// if (!publishablekey) {
+//   throw new Error("Missing publishable key");
+// }
 
 export default function RootLayout() {
 
@@ -11,9 +19,11 @@ export default function RootLayout() {
 
 
   return(
-
-    <SafeAreaProvider>
-    <SafeAreaView style={{ flex: 1 }}>
+    
+    <ClerkProvider tokenCache={tokenCache}>
+      <ClerkLoaded>
+      <SafeAreaProvider>
+    <SafeAreaView style={{ flex: 1 , backgroundColor : "black"}}>
 
   
   <Stack screenOptions={{headerShown : false}}>
@@ -22,5 +32,10 @@ export default function RootLayout() {
   </Stack>;
     </SafeAreaView>
   </SafeAreaProvider>
+      </ClerkLoaded>
+      
+
+    </ClerkProvider>
+    
   );
 }

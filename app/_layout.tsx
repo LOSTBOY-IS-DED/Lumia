@@ -16,7 +16,7 @@ export default function RootLayout() {
     <SafeAreaView style={{ flex: 1 }}>
 
   
-  <Stack>
+  <Stack screenOptions={{headerShown : false}}>
     <Stack.Screen name="index" options={{title : "Home"}} />
     <Stack.Screen name = "notifications" options={{title : "Notifications" , headerShown : false}} />
   </Stack>;

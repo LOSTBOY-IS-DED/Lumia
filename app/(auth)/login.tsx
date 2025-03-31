@@ -14,8 +14,8 @@ export default function login() {
         try{
             const { createdSessionId, setActive } = await startSSOFlow({ strategy: "oauth_google" });
 
-            console.log("Created Session ID: ", createdSessionId);
-            console.log("Set Active: ", setActive);
+            // console.log("Created Session ID: ", createdSessionId);
+            // console.log("Set Active: ", setActive);
         
           if(setActive && createdSessionId){
             setActive({session : createdSessionId});
@@ -24,7 +24,7 @@ export default function login() {
 
 
         }catch(error){
-            console.error("OAuth error: ", error);
+            // console.error("OAuth error: ", error);
             alert(`OAuth error: ${error}`);
 
         }
